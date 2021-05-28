@@ -8,7 +8,7 @@ Este app foi criado para o bootcamp da Rocketseat em 2021.1 e todo código fonte
 
 ---
 ## Pré-requisitos para rodar o sistema:
-Para rodar o sistema será necessário instalar o [node](https://nodejs.org/en/ "Clique e veja como baixar o node") e as dependência dos React Native [Expo](https://react-native.rocketseat.dev/ "Clique e veja como baixar o React Native").
+Para rodar o sistema será necessário instalar o [node](https://nodejs.org/en/ "Clique e veja como baixar o node") e as dependência do [React Native](https://react-native.rocketseat.dev/ "Clique e veja como baixar o React Native").
 ## Rodando o projeto:
 ````git
 $ git clone https://github.com/AdeLuigi/conceitos-react-native.git
