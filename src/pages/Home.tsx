@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { View } from 'react-native';
 
 import { Header } from '../components/Header';
 import { MyTasksList } from '../components/MyTasksList';
@@ -11,6 +12,8 @@ interface Task {
 }
 
 export function Home() {
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
    const [tasks, setTasks] = useState<Task[]>([]);
 
   function handleAddTask(newTaskTitle: string) {
@@ -39,15 +42,18 @@ export function Home() {
 
   return (
     <>
-      <Header />
+      <Header setIsEnable={setIsEnabled} isEnabled={isEnabled} />
 
-      <TodoInput addTask={handleAddTask} />
+      <View style={{backgroundColor: isEnabled ? '#262626' : '#FFF' , flex:1}}>
+      <TodoInput isEnabled={isEnabled} addTask={handleAddTask} />
 
-      <MyTasksList 
+      <MyTasksList
+        isEnabled={isEnabled}
         tasks={tasks} 
         onPress={handleMarkTaskAsDone} 
         onLongPress={handleRemoveTask} 
       />
+      </View>
     </>
   )
 }

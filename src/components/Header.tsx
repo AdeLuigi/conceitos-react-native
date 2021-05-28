@@ -1,12 +1,30 @@
-import React from 'react';
-import { View, Text, StatusBar, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StatusBar, StyleSheet, Switch } from 'react-native';
 
-export function Header() {
+interface LabeledValue {
+  isEnabled:boolean;
+  setIsEnable:React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export function Header<Header>({isEnabled, setIsEnable}: LabeledValue) {
+
   return (
-    <View style={styles.header}>
+    <>
+    <View style={isEnabled ? styles.headerSwitch : styles.header}>
       <Text style={styles.headerText}>to.</Text>
       <Text style={[styles.headerText, { fontFamily: 'Poppins-SemiBold' }]}>do</Text>
+      <View>
+          <Switch
+              trackColor={{ false: "#767577", true: "#181818" }}
+              thumbColor={isEnabled ? "#BF4AD4" : "#f4f3f4"}
+              ios_backgroundColor="#3e3e3e"
+              onValueChange={() => setIsEnable(previousState => !previousState)}
+              value={isEnabled}
+            />
+      </View>
+      
     </View>
+    </>
   )
 }
 
@@ -15,6 +33,14 @@ const styles = StyleSheet.create({
     paddingTop: StatusBar.currentHeight,
     paddingBottom: 44,
     backgroundColor: '#273FAD',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row'
+  },
+  headerSwitch: {
+    paddingTop: StatusBar.currentHeight,
+    paddingBottom: 44,
+    backgroundColor: '#3E3E3E',
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row'
